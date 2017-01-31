@@ -11,9 +11,9 @@ qboolean MultiEffect::GetStartDelay( DWORD &StartDelay )
 {
 	StartDelay = MAXDWORD;
 	qboolean result = qtrue;
-
+	int i = 0, max = GetNumberOfContainedEffects();
 	for
-	(	int i = 0, max = GetNumberOfContainedEffects()
+	(	i = 0, max
 	;	i < max
 	;	i++
 	){
@@ -46,9 +46,9 @@ qboolean MultiEffect::GetDelayEnd( DWORD &DelayEnd )
 {
 	DelayEnd = MAXDWORD;
 	qboolean result = qtrue;
-
+	int i = 0, max = GetNumberOfContainedEffects();
 	for
-	(	int i = 0, max = GetNumberOfContainedEffects()
+	(	i = 0, max
 	;	i < max
 	;	i++
 	){
@@ -86,9 +86,9 @@ qboolean MultiEffect::ChangeDuration( DWORD Duration )
 	if ( result )
 	{
 		DWORD RelativeDuration = Duration - CurrentDuration;
-
+		int i = 0, max = GetNumberOfContainedEffects();
 		for
-		(	int i = 0, max = GetNumberOfContainedEffects()
+		(	i = 0, max
 		;	i < max
 		;	i++
 		){
@@ -128,9 +128,9 @@ qboolean MultiEffect::ChangeGain( DWORD Gain )
 	if ( result )
 	{
 		DWORD RelativeGain = Gain - CurrentGain;
-
+		int i = 0, max = GetNumberOfContainedEffects();
 		for
-		(	int i = 0, max = GetNumberOfContainedEffects()
+		(	i = 0, max
 		;	i < max
 		;	i++
 		){
@@ -160,8 +160,9 @@ qboolean MultiEffect::GetStatus( DWORD &Status )
 	Status = 0;
 	qboolean result = qtrue;
 
+	int i = 0, max = GetNumberOfContainedEffects();
 	for
-	(	int i = 0, max = GetNumberOfContainedEffects()
+	(	i = 0, max
 	;	i < max
 	;	i++
 	){
@@ -193,8 +194,9 @@ qboolean MultiEffect::ChangeStartDelay( DWORD StartDelay )
 	{
 		DWORD RelativeStartDelay = StartDelay - CurrentStartDelay;
 		
+		int i = 0, max = GetNumberOfContainedEffects();
 		for
-		(	int i = 0, max = GetNumberOfContainedEffects()
+		(	i = 0, max
 		;	i < max
 		;	i++
 		){
@@ -216,9 +218,9 @@ qboolean MultiEffect::GetDuration( DWORD &Duration )
 {
 	Duration = 0;
 	qboolean result = qtrue;
-
+	int i = 0, max = GetNumberOfContainedEffects();
 	for
-	(	int i = 0, max = GetNumberOfContainedEffects()
+	(	i = 0, max
 	;	i < max
 	;	i++
 	){
@@ -245,9 +247,9 @@ qboolean MultiEffect::GetGain( DWORD &Gain )
 {
 	Gain = 0;
 	qboolean result = qtrue;
-
+	int i = 0, max = GetNumberOfContainedEffects();
 	for
-	(	int i = 0, max = GetNumberOfContainedEffects()
+	(	i = 0, max
 	;	i < max
 	;	i++
 	){

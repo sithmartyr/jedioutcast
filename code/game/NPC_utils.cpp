@@ -158,7 +158,7 @@ void CalcEntitySpot ( const gentity_t *ent, const spot_t spot, vec3_t point )
 		start[2] = ent->absmin[2];
 		VectorCopy( start, end );
 		end[2] -= 64;
-		gi.trace( &tr, start, ent->mins, ent->maxs, end, ent->s.number, MASK_PLAYERSOLID );
+		gi.trace(&tr, start, ent->mins, ent->maxs, end, ent->s.number, MASK_PLAYERSOLID, G2_NOCOLLIDE, 0);
 		if ( tr.fraction < 1.0 ) 
 		{
 			VectorCopy( tr.endpos, point);
@@ -1030,7 +1030,8 @@ int NPC_FindNearestEnemy( gentity_t *ent )
 	int			numEnts, numChecks = 0;
 
 	//Setup the bbox to search in
-	for ( int i = 0; i < 3; i++ )
+	int i = 0;
+	for ( ; i < 3; i++ )
 	{
 		mins[i] = ent->currentOrigin[i] - NPCInfo->stats.visrange;
 		maxs[i] = ent->currentOrigin[i] + NPCInfo->stats.visrange;

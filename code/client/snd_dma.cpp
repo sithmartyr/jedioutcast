@@ -4291,7 +4291,8 @@ void S_StartBackgroundTrack( const char *intro, const char *loop, qboolean bCall
 		{
 			extern const char *Music_GetLevelSetName(void);
 			Q_strncpyz(sInfoOnly_CurrentDynamicMusicSet, Music_GetLevelSetName(), sizeof(sInfoOnly_CurrentDynamicMusicSet));
-			for (int i = eBGRNDTRACK_DATABEGIN; i != eBGRNDTRACK_DATAEND; i++)
+			int i = eBGRNDTRACK_DATABEGIN;
+			for (; i != eBGRNDTRACK_DATAEND; i++)
 			{
 				qboolean bOk = qfalse;
 				LPCSTR psMusicName = Music_GetFileNameForState( (MusicState_e) i);
@@ -4923,7 +4924,8 @@ int SND_FreeOldestSound(sfx_t *pButNotThisOne /* = NULL */)
 			{
 				// new bit, we can't throw away any sfx_t struct in use by a channel, else the paint code will crash...
 				//
-				for (int iChannel=0; iChannel<MAX_CHANNELS; iChannel++)
+				int iChannel = 0;
+				for (; iChannel<MAX_CHANNELS; iChannel++)
 				{
 					channel_t *ch = & s_channels[iChannel];
 

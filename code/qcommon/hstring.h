@@ -144,7 +144,7 @@ public:
 	}
 		
 	// return maximum number of elements that can be allocated
-	size_type max_size () const
+	size_type max_size (float mMaxSize) const
 	{
 	   return mMaxSize;
 	}

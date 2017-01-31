@@ -1881,12 +1881,12 @@ qboolean Script_SetFocus(itemDef_t *item, const char **args)
 			{
 				DC->startLocalSound( DC->Assets.itemFocusSound, CHAN_LOCAL_SOUND );
 			}
-#ifdef _IMMERSION
+/*#ifdef _IMMERSION
 			if (DC->Assets.itemFocusForce)
 			{
 				DC->startForce( DC->Assets.itemFocusForce );
 			}
-#endif // _IMMERSION
+#endif // _IMMERSION*/
 		}
 	}
 
@@ -2116,13 +2116,13 @@ qboolean Script_playLooped(itemDef_t *item, const char **args)
 	return qtrue;
 }
 
-#ifdef _IMMERSION
+//#ifdef _IMMERSION
 /*
 =================
 Script_FFPlay
 =================
 */
-qboolean Script_FFPlay(itemDef_t *item, const char **args) 
+/*qboolean Script_FFPlay(itemDef_t *item, const char **args) 
 {
 	const char *val;
 	if (String_Parse(args, &val)) 
@@ -2131,7 +2131,7 @@ qboolean Script_FFPlay(itemDef_t *item, const char **args)
 	}
 	return qtrue;
 }
-#endif // _IMMERSION
+#endif // _IMMERSION*/
 /*
 =================
 Script_Orbit
@@ -2169,9 +2169,9 @@ commandDef_t commandList[] =
   {"orbit",			&Script_Orbit},					// group/name
   {"play",			&Script_Play},					// group/name
   {"playlooped",	&Script_playLooped},			// group/name
-#ifdef _IMMERSION
+/*#ifdef _IMMERSION
   {"ffplay",		&Script_FFPlay},
-#endif // _IMMERSION
+#endif // _IMMERSION*/
   {"setasset",		&Script_SetAsset},				// works on this
   {"setbackground", &Script_SetBackground},			// works on this
   {"setcolor",		&Script_SetColor},				// works on this
@@ -2311,14 +2311,14 @@ qboolean ItemParse_focusSound( itemDef_t *item)
 
 
 
-#ifdef _IMMERSION
+//#ifdef _IMMERSION
 /*
 ===============
 ItemParse_focusForce
 	name <string>
 ===============
 */
-qboolean ItemParse_focusForce( itemDef_t *item) 
+/*qboolean ItemParse_focusForce( itemDef_t *item) 
 {
 	const char *temp;
 
@@ -2332,7 +2332,7 @@ qboolean ItemParse_focusForce( itemDef_t *item)
 	item->focusForce = DC->registerForce(temp);
 	return qtrue;
 }
-#endif // _IMMERSION
+#endif // _IMMERSION*/
 
 /*
 ===============
@@ -3784,9 +3784,9 @@ keywordHash_t itemParseKeywords[] = {
 	{"feeder",			ItemParse_feeder,			},
 	{"flag",			ItemParse_flag,				},
 	{"focusSound",		ItemParse_focusSound,		},
-#ifdef _IMMERSION
+	/*
 	{"focusForce",		ItemParse_focusForce,		},
-#endif // _IMMERSION
+#endif // _IMMERSION*/
 	{"font",			ItemParse_font,				},
 	{"forecolor",		ItemParse_forecolor,		},
 	{"group",			ItemParse_group,			},
@@ -6789,12 +6789,12 @@ qboolean Item_SetFocus(itemDef_t *item, float x, float y)
 		DC->startLocalSound( *sfx, CHAN_LOCAL_SOUND );
 	}
 
-#ifdef _IMMERSION
+/*#ifdef _IMMERSION
 	if (playForce && ff)
 	{
 		DC->startForce( *ff );
 	}
-#endif // _IMMERSION
+#endif // _IMMERSION*/
 	for (i = 0; i < parent->itemCount; i++) 
 	{
 		if (parent->items[i] == item) 

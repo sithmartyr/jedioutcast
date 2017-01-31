@@ -189,10 +189,10 @@ typedef struct {
 	int			(*textWidth) (const char *text, float scale, int iFontIndex);
 	qhandle_t	(*feederItemImage) (float feederID, int index);
 	const char *(*feederItemText) (float feederID, int index, int column, qhandle_t *handle);
-#ifdef _IMMERSION
+/*#ifdef _IMMERSION
 	ffHandle_t	(*registerForce)(const char *name, int channel=FF_CHANNEL_MENU);
 	void		(*startForce)(ffHandle_t ff);
-#endif // _IMMERSION
+#endif // _IMMERSION*/
 
 	float		yscale;
 	float		xscale;

@@ -1247,8 +1247,8 @@ void CGCam_UpdateShake( vec3_t origin, vec3_t angles )
 	intensity_scale = 1.0f - ( (float) ( cg.time - client_camera.shake_start ) / (float) client_camera.shake_duration ) * (((client_camera.FOV+client_camera.FOV2)/2.0f)/90.0f);
 
 	intensity = client_camera.shake_intensity * intensity_scale;
-
-	for ( int i = 0; i < 3; i++ )
+	int i = 0;
+	for (i = 0; i < 3; i++ )
 	{
 		moveDir[i] = ( crandom() * intensity );
 	}

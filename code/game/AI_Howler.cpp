@@ -103,7 +103,7 @@ void Howler_TryDamage( gentity_t *enemy, int damage )
 	VectorMA( NPC->currentOrigin, MIN_DISTANCE, dir, end );
 
 	// Should probably trace from the mouth, but, ah well.
-	gi.trace( &tr, NPC->currentOrigin, vec3_origin, vec3_origin, end, NPC->s.number, MASK_SHOT );
+	gi.trace( &tr, NPC->currentOrigin, vec3_origin, vec3_origin, end, NPC->s.number, MASK_SHOT, G2_NOCOLLIDE, 0 );
 
 	if ( tr.entityNum != ENTITYNUM_WORLD )
 	{

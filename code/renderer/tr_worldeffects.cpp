@@ -35,7 +35,6 @@ extern void SetViewportAndScissor( void );
 
 
 
-
 float FloatRand(void) 
 { 
 //	char	temp[1000];

@@ -746,7 +746,7 @@ static void UI_StopCinematic(int handle)
 		}
 	}
 }
-static UI_HandleLoadSelection()
+static void UI_HandleLoadSelection()
 {
 	Cvar_Set("ui_SelectionOK", va("%d",(s_savegame.currentLine < s_savegame.saveFileCnt)) );
 	Cvar_Set("ui_gameDesc", s_savedata[s_savegame.currentLine].currentSaveFileComments );	// set comment 
@@ -928,10 +928,10 @@ void _UI_Init( qboolean inGameLoad )
 	uiInfo.uiDC.textWidth			= &Text_Width;
 	uiInfo.uiDC.feederItemImage		= &UI_FeederItemImage;
 	uiInfo.uiDC.feederItemText		= &UI_FeederItemText;
-#ifdef _IMMERSION
+/*#ifdef _IMMERSION
 	uiInfo.uiDC.registerForce		= &trap_FF_Register;
 	uiInfo.uiDC.startForce			= &trap_FF_Start;
-#endif // _IMMERSION
+#endif // _IMMERSION*/
 	uiInfo.uiDC.ownerDrawHandleKey	= &UI_OwnerDrawHandleKey;
 
 	UI_Load();

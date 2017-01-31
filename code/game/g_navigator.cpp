@@ -358,7 +358,8 @@ int	CNode::Save( int numNodes, fileHandle_t file )
 	gi.FS_Write( &header, sizeof( header ), file );
 
 	//Write out the basic information
-	for ( int i = 0; i < 3; i++ )
+	int i = 0;
+	for ( ; i < 3; i++ )
 		gi.FS_Write( &m_position[i], sizeof( float ), file );
 
 	gi.FS_Write( &m_flags, sizeof( m_flags ), file );
@@ -401,7 +402,8 @@ int CNode::Load( int numNodes, fileHandle_t file )
 		return false;
 
 	//Get the basic information
-	for ( int i = 0; i < 3; i++ )
+	int i = 0;
+	for ( ; i < 3; i++ )
 		gi.FS_Read( &m_position[i], sizeof( float ), file );
 
 	gi.FS_Read( &m_flags, sizeof( m_flags ), file );
@@ -705,7 +707,7 @@ int	CNavigator::GetEdgeCost( CNode *first, CNode *second )
 	first->GetPosition( start );
 	second->GetPosition( end );
 
-	gi.trace( &trace, start, mins, maxs, end, ENTITYNUM_NONE, MASK_SOLID );
+	gi.trace( &trace, start, mins, maxs, end, ENTITYNUM_NONE, MASK_SOLID, G2_NOCOLLIDE, 0 );
 
 	if ( trace.fraction < 1.0f || trace.allsolid || trace.startsolid )
 		return Q3_INFINITE; // return -1;
@@ -787,7 +789,8 @@ void CNavigator::CalculatePath( CNode *node )
 	node->AddRank( node->GetID(), curRank++ );
 
 	//Add all initial nodes
-	for ( int i = 0; i < node->GetNumEdges(); i++ )
+	int i = 0;
+	for ( ; i < node->GetNumEdges(); i++ )
 	{
 		CNode	*nextNode = m_nodes[ node->GetEdge(i) ];
 		assert(nextNode);
@@ -849,8 +852,8 @@ void CNavigator::CalculatePaths( bool	recalc )
 #if _HARD_CONNECT
 #else
 #endif	
-
-	for ( int i = 0; i < m_nodes.size(); i++ )
+	int i = 0;
+	for ( ; i < m_nodes.size(); i++ )
 	{
 		//Allocate the needed memory
 		m_nodes[i]->InitRanks( m_nodes.size() );
@@ -1027,7 +1030,7 @@ void CNavigator::CheckBlockedEdges( void )
 				end->GetPosition( p2 );
 
 				//FIXME: can't we just store the trace.entityNum from the HardConnect trace?  So we don't have to do another trace here...
-				gi.trace( &trace, p1, wpMins, wpMaxs, p2, ENTITYNUM_NONE, MASK_SOLID|CONTENTS_MONSTERCLIP|CONTENTS_BOTCLIP );
+				gi.trace( &trace, p1, wpMins, wpMaxs, p2, ENTITYNUM_NONE, MASK_SOLID | CONTENTS_MONSTERCLIP | CONTENTS_BOTCLIP, G2_NOCOLLIDE, 0 );
 
 				if ( trace.entityNum < ENTITYNUM_WORLD && (trace.fraction < 1.0f || trace.startsolid == qtrue || trace.allsolid == qtrue) )
 				{//could be assumed, since failed before
@@ -1091,7 +1094,7 @@ void CNavigator::HardConnect( int first, int second )
 	
 	int		flags = EFLAG_NONE;
 
-	gi.trace( &trace, p1, wpMins, wpMaxs, p2, ENTITYNUM_NONE, MASK_SOLID|CONTENTS_BOTCLIP|CONTENTS_MONSTERCLIP );
+	gi.trace( &trace, p1, wpMins, wpMaxs, p2, ENTITYNUM_NONE, MASK_SOLID | CONTENTS_BOTCLIP | CONTENTS_MONSTERCLIP, G2_NOCOLLIDE, 0 );
 
 	int cost = Distance( p1, p2 );
 
@@ -2063,7 +2066,7 @@ qboolean CNavigator::CheckFailedEdge( failedEdge_t *failedEdge )
 				return qfalse;
 			}
 
-			gi.trace( &trace, start, mins, maxs, end, ignore, clipmask|CONTENTS_MONSTERCLIP|CONTENTS_BOTCLIP );//NOTE: should we really always include monsterclip (physically blocks NPCs) and botclip (do not enter)?
+			gi.trace( &trace, start, mins, maxs, end, ignore, clipmask | CONTENTS_MONSTERCLIP | CONTENTS_BOTCLIP, G2_NOCOLLIDE, 0 );//NOTE: should we really always include monsterclip (physically blocks NPCs) and botclip (do not enter)?
 
 			if( trace.startsolid == qtrue || trace.allsolid == qtrue )
 			{

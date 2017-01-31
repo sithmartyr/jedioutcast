@@ -184,8 +184,9 @@ qboolean MultiCompound::operator == ( MultiCompound &compound )
 
 	if ( mSet.size() == other.size() )
 	{
+		Set::iterator itSet = mSet.begin(), itOther = other.begin();
 		for
-		(	Set::iterator itSet = mSet.begin(), itOther = other.begin()
+		(	itSet
 		;	itSet != mSet.end()
 		//&&	itOther != other.end()	// assumed since mSet.size() == other.size()
 		&&	(*itSet) == (*itOther)
